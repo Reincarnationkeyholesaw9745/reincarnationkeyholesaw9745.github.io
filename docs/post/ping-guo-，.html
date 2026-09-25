@@ -12,7 +12,17 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. Header 统一为相对定位 */
+/* 🌟 1. 彻底干掉页面中渲染出来的“欢迎来到科技岛！”副标题及原生大标题 */
+.subTitle, #header .subTitle, #header h1, .title-with-avatar, #header + div:not(#proNoticeCard) > h1 {
+    display: none !important;
+}
+
+/* 🌟 2. 隐藏 RSS / WiFi 图标 */
+#buttonRSS, a[aria-label="rss"], .subnav-right a:not(#buttonSearch):not(#buttonTheme) {
+    display: none !important;
+}
+
+/* 🌟 3. Header 容器与 Flex 布局 */
 #header {
     position: relative !important;
 }
@@ -24,39 +34,39 @@
     width: 100% !important;
 }
 
-/* 🌟 2. 强行锁定放大镜与月亮图标（绝对垂直居中对齐） */
+/* 🌟 4. 右上角放大镜与月亮图标居中对齐 */
 .subnav-right {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-#buttonSearch, #buttonTheme, a.btn-invisible {
-    display: inline-flex !important;
+#buttonSearch, #buttonTheme {
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 32px !important;
-    height: 32px !important;
+    width: 36px !important;
+    height: 36px !important;
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;
-    background: none !important;
-    vertical-align: middle !important;
+    background: transparent !important;
     box-sizing: border-box !important;
 }
 
 #buttonSearch svg, #buttonTheme svg {
     width: 20px !important;
     height: 20px !important;
-    fill: currentColor !important;
     margin: 0 !important;
+    padding: 0 !important;
     display: block !important;
 }
 
-/* 🌟 3. 彻底解决点击放大镜展开搜索框时挤压公告的问题（设为下拉悬浮层） */
-.subnav-search, div[search] {
+/* 🌟 5. 点击搜索框下拉悬浮 */
+.subnav-search {
     position: absolute !important;
     top: 100% !important;
     left: 0 !important;
@@ -71,7 +81,7 @@
     box-sizing: border-box !important;
 }
 
-/* 🌟 4. 左上角品牌胶囊卡片 */
+/* 🌟 6. 左上角品牌胶囊 */
 .pro-brand-capsule {
     position: relative;
     overflow: hidden;
@@ -114,7 +124,7 @@
     letter-spacing: 1.5px;
 }
 
-/* 🌟 5. 系统公告卡片（独立挂载在 Header 下方，强行满屏宽度） */
+/* 🌟 7. 系统公告卡片 */
 .pro-notice-card {
     position: relative !important;
     overflow: hidden !important;
@@ -162,10 +172,6 @@
     line-height: 1.75 !important;
     color: #cbd5e1 !important;
 }
-
-.subTitle {
-    display: none !important;
-}
 </style>
 
 <script>
@@ -188,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function() {
         capsule.appendChild(textDiv);
     }
 
-    // 2. 注入系统公告（精确插入在 header 标签外部正下方）
+    // 2. 注入系统公告
     if (!document.getElementById("proNoticeCard")) {
         let noticeCard = document.createElement("div");
         noticeCard.id = "proNoticeCard";
