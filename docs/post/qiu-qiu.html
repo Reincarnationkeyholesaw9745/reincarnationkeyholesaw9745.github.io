@@ -12,7 +12,7 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. Header 统一为相对定位基准 */
+/* 🌟 1. Header 基础定位 */
 #header {
     position: relative !important;
 }
@@ -24,7 +24,7 @@
     width: 100% !important;
 }
 
-/* 🌟 2. 右侧功能图标（放大镜、月亮、主页）统一垂直居中 */
+/* 🌟 2. 右侧按钮居中 */
 .subnav-right {
     display: flex !important;
     align-items: center !important;
@@ -46,11 +46,6 @@
     border-radius: 50% !important;
     vertical-align: middle !important;
     box-sizing: border-box !important;
-    transition: background 0.2s ease !important;
-}
-
-#buttonSearch:hover, #buttonTheme:hover, a.btn-invisible:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 #buttonSearch svg, #buttonTheme svg {
@@ -61,45 +56,62 @@
     display: block !important;
 }
 
-/* 🌟 3. 彻底解决搜索框下掉/遮挡公告问题：改为 Header 内部覆盖显示 */
+/* 🌟 3. 重构搜索框为顶部悬浮胶囊（完美解决错位与半截显示） */
 .subnav-search, div[search] {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 99999 !important;
-    background: rgba(15, 23, 42, 0.96) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    padding: 0 10px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
-    box-sizing: border-box !important;
+    position: fixed !important;
+    top: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    height: 48px !important;
+    z-index: 999999 !important;
+    background: rgba(30, 27, 75, 0.98) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1.5px solid rgba(167, 139, 250, 0.5) !important;
+    border-radius: 24px !important;
+    padding: 4px 6px 4px 16px !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
     display: flex !important;
     align-items: center !important;
+    box-sizing: border-box !important;
 }
 
-/* 搜索框内表单与输入框样式修复 */
+/* 搜索框表单弹性排版 */
 div[search] form, .subnav-search form {
     display: flex !important;
     align-items: center !important;
     width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     gap: 8px !important;
 }
 
+/* 输入框样式修正 */
 div[search] input, .subnav-search input {
     flex: 1 !important;
-    height: 34px !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(167, 139, 250, 0.3) !important;
-    border-radius: 8px !important;
-    padding: 0 12px !important;
-    color: #fff !important;
+    height: 36px !important;
+    background: transparent !important;
+    border: none !important;
+    color: #ffffff !important;
     font-size: 14px !important;
     outline: none !important;
+    padding: 0 6px !important;
+}
+
+/* 搜索提交按钮重新设计 */
+div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn {
+    height: 36px !important;
+    padding: 0 16px !important;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 18px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
 }
 
 /* 🌟 4. 左上角品牌胶囊卡片 */
@@ -145,7 +157,7 @@ div[search] input, .subnav-search input {
     letter-spacing: 1.2px;
 }
 
-/* 🌟 5. 系统公告卡片（自适应流式宽度，解决手机端横向溢出） */
+/* 🌟 5. 系统公告卡片 */
 .pro-notice-card {
     position: relative !important;
     overflow: hidden !important;
@@ -200,7 +212,6 @@ div[search] input, .subnav-search input {
 <script>
 (function() {
     function initProTheme() {
-        // 1. 生成左上角品牌胶囊
         let avatarImg = document.getElementById("avatarImg") || document.querySelector(".avatar");
         if (avatarImg && !document.getElementById("proBrandCapsule")) {
             let capsule = document.createElement("a");
@@ -220,7 +231,6 @@ div[search] input, .subnav-search input {
             }
         }
 
-        // 2. 注入系统公告
         if (!document.getElementById("proNoticeCard")) {
             let noticeCard = document.createElement("div");
             noticeCard.id = "proNoticeCard";
