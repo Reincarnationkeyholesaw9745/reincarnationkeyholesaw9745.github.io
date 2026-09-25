@@ -12,7 +12,7 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. Header 统一为相对定位 */
+/* 🌟 1. Header 统一为相对定位基准 */
 #header {
     position: relative !important;
 }
@@ -24,11 +24,11 @@
     width: 100% !important;
 }
 
-/* 🌟 2. 强行锁定放大镜与月亮图标（绝对垂直居中对齐） */
+/* 🌟 2. 右侧功能图标（放大镜、月亮、主页）统一垂直居中 */
 .subnav-right {
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 8px !important;
     margin: 0 !important;
     padding: 0 !important;
 }
@@ -37,14 +37,20 @@
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 32px !important;
-    height: 32px !important;
+    width: 34px !important;
+    height: 34px !important;
     padding: 0 !important;
     margin: 0 !important;
     border: none !important;
     background: none !important;
+    border-radius: 50% !important;
     vertical-align: middle !important;
     box-sizing: border-box !important;
+    transition: background 0.2s ease !important;
+}
+
+#buttonSearch:hover, #buttonTheme:hover, a.btn-invisible:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 #buttonSearch svg, #buttonTheme svg {
@@ -55,20 +61,45 @@
     display: block !important;
 }
 
-/* 🌟 3. 彻底解决点击放大镜展开搜索框时挤压公告的问题（设为下拉悬浮层） */
+/* 🌟 3. 彻底解决搜索框下掉/遮挡公告问题：改为 Header 内部覆盖显示 */
 .subnav-search, div[search] {
     position: absolute !important;
-    top: 100% !important;
+    top: 0 !important;
     left: 0 !important;
     right: 0 !important;
+    bottom: 0 !important;
     width: 100% !important;
+    height: 100% !important;
     z-index: 99999 !important;
-    background: rgba(15, 23, 42, 0.95) !important;
+    background: rgba(15, 23, 42, 0.96) !important;
     backdrop-filter: blur(12px) !important;
-    padding: 10px 12px !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    padding: 0 10px !important;
     border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
     box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* 搜索框内表单与输入框样式修复 */
+div[search] form, .subnav-search form {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 8px !important;
+}
+
+div[search] input, .subnav-search input {
+    flex: 1 !important;
+    height: 34px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(167, 139, 250, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 0 12px !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    outline: none !important;
 }
 
 /* 🌟 4. 左上角品牌胶囊卡片 */
@@ -77,18 +108,18 @@
     overflow: hidden;
     display: inline-flex !important;
     align-items: center;
-    padding: 6px 14px !important;
+    padding: 5px 12px !important;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 240, 255, 0.95) 100%) !important;
     border: 1.5px solid rgba(147, 112, 219, 0.45) !important;
     border-radius: 30px !important;
-    box-shadow: 0 8px 24px rgba(138, 43, 226, 0.12) !important;
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.12) !important;
     text-decoration: none !important;
 }
 
 .pro-brand-capsule img, .pro-brand-capsule .avatar {
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 10px !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 8px !important;
     object-fit: cover;
     margin-right: 8px !important;
 }
@@ -100,7 +131,7 @@
 }
 
 .pro-brand-title {
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-weight: 800 !important;
     background: linear-gradient(135deg, #7b2cbf 0%, #3a86ff 100%);
     -webkit-background-clip: text;
@@ -111,24 +142,22 @@
     font-size: 8px !important;
     font-weight: 700 !important;
     color: #6c757d !important;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
 }
 
-/* 🌟 5. 系统公告卡片（独立挂载在 Header 下方，强行满屏宽度） */
+/* 🌟 5. 系统公告卡片（自适应流式宽度，解决手机端横向溢出） */
 .pro-notice-card {
     position: relative !important;
     overflow: hidden !important;
     display: block !important;
-    width: calc(100vw - 24px) !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    width: 100% !important;
     box-sizing: border-box !important;
     background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #151c2f 100%) !important;
     border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-    border-radius: 18px !important;
-    padding: 16px 18px !important;
-    margin: 16px 0 20px 0 !important;
-    box-shadow: 0 12px 35px rgba(30, 27, 75, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 14px 16px !important;
+    margin: 14px 0 18px 0 !important;
+    box-shadow: 0 10px 30px rgba(30, 27, 75, 0.3) !important;
     color: #f1f5f9 !important;
 }
 
@@ -159,7 +188,7 @@
 
 .pro-notice-body {
     font-size: 13px !important;
-    line-height: 1.75 !important;
+    line-height: 1.7 !important;
     color: #cbd5e1 !important;
 }
 
@@ -169,48 +198,58 @@
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // 1. 生成左上角品牌胶囊
-    let avatarImg = document.getElementById("avatarImg") || document.querySelector(".avatar");
-    if (avatarImg && !document.getElementById("proBrandCapsule")) {
-        let capsule = document.createElement("a");
-        capsule.id = "proBrandCapsule";
-        capsule.href = "https://tghaocc.github.io";
-        capsule.className = "pro-brand-capsule";
-        
-        let textDiv = document.createElement("div");
-        textDiv.className = "pro-brand-text";
-        textDiv.innerHTML = '<span class="pro-brand-title">科技岛</span><span class="pro-brand-subtitle">GLOBAL STORE</span>';
-        
-        let parent = avatarImg.parentNode;
-        parent.insertBefore(capsule, avatarImg);
-        capsule.appendChild(avatarImg);
-        capsule.appendChild(textDiv);
-    }
+(function() {
+    function initProTheme() {
+        // 1. 生成左上角品牌胶囊
+        let avatarImg = document.getElementById("avatarImg") || document.querySelector(".avatar");
+        if (avatarImg && !document.getElementById("proBrandCapsule")) {
+            let capsule = document.createElement("a");
+            capsule.id = "proBrandCapsule";
+            capsule.href = "https://tghaocc.github.io";
+            capsule.className = "pro-brand-capsule";
+            
+            let textDiv = document.createElement("div");
+            textDiv.className = "pro-brand-text";
+            textDiv.innerHTML = '<span class="pro-brand-title">科技岛</span><span class="pro-brand-subtitle">GLOBAL STORE</span>';
+            
+            let parent = avatarImg.parentNode;
+            if (parent) {
+                parent.insertBefore(capsule, avatarImg);
+                capsule.appendChild(avatarImg);
+                capsule.appendChild(textDiv);
+            }
+        }
 
-    // 2. 注入系统公告（精确插入在 header 标签外部正下方）
-    if (!document.getElementById("proNoticeCard")) {
-        let noticeCard = document.createElement("div");
-        noticeCard.id = "proNoticeCard";
-        noticeCard.className = "pro-notice-card";
-        noticeCard.innerHTML = `
-            <div class="pro-notice-header">
-                <span class="pro-notice-badge1">📢 系统公告</span>
-                <span class="pro-notice-badge2">平台指南</span>
-            </div>
-            <div class="pro-notice-body">
-                欢迎来到科技岛！我们长期为您提供稳定、安全的美区、港区、日区 App Store 账号与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。
-            </div>
-        `;
-        
-        let headerContainer = document.getElementById("header") || document.querySelector(".header");
-        if (headerContainer && headerContainer.parentNode) {
-            headerContainer.insertAdjacentElement('afterend', noticeCard);
-        } else {
-            document.body.prepend(noticeCard);
+        // 2. 注入系统公告
+        if (!document.getElementById("proNoticeCard")) {
+            let noticeCard = document.createElement("div");
+            noticeCard.id = "proNoticeCard";
+            noticeCard.className = "pro-notice-card";
+            noticeCard.innerHTML = `
+                <div class="pro-notice-header">
+                    <span class="pro-notice-badge1">📢 系统公告</span>
+                    <span class="pro-notice-badge2">平台指南</span>
+                </div>
+                <div class="pro-notice-body">
+                    欢迎来到科技岛！我们长期为您提供稳定、安全的苹果 ID 与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。
+                </div>
+            `;
+            
+            let headerContainer = document.getElementById("header") || document.querySelector(".header");
+            if (headerContainer && headerContainer.parentNode) {
+                headerContainer.insertAdjacentElement('afterend', noticeCard);
+            } else {
+                document.body.prepend(noticeCard);
+            }
         }
     }
-});
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProTheme);
+    } else {
+        initProTheme();
+    }
+})();
 </script>
     <link rel="icon" href="https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
