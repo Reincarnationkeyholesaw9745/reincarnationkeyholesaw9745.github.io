@@ -7,150 +7,80 @@
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="canonical" href="https://tghaocc.github.io/">
 <meta name="robots" content="index, follow">
+<meta name="keywords" content="苹果ID共享,免费苹果ID,美区AppleID,日区苹果账号,小火箭共享,appleID共享,苹果外区账号,Shadowrocket下载,iOS锁区解决">
 <meta property="og:type" content="website">
 <meta property="og:title" content="科技岛 - 免费苹果ID共享_美区日区AppleID与小火箭账号获取">
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. Header 导航栏：开启弹性换行 */
-#header {
-    position: relative !important;
-    width: 100% !important;
-}
-
-.subnav {
+/* 🌟 1. Header 顶部导航栏两行弹性布局 */
+#header, .subnav {
     display: flex !important;
-    flex-wrap: wrap !important; /* 允许展开时换行占满一整行 */
+    flex-wrap: wrap !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
-    gap: 8px 0 !important;
+    position: relative !important;
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid var(--color-border-muted, rgba(140, 149, 159, 0.2)) !important;
+    gap: 10px 0 !important;
 }
 
-/* 🌟 2. 右侧功能按钮对齐 */
-.subnav-right {
+.title-right, .subnav-right {
     display: flex !important;
     align-items: center !important;
+    justify-content: flex-end !important;
     gap: 8px !important;
     margin: 0 !important;
-    padding: 0 !important;
 }
 
-#buttonSearch, #buttonTheme, a.btn-invisible {
+/* 🌟 2. 右上角功能按钮（晶莹圆扣） */
+#buttonHome, #buttonSearch, #buttonTheme, a.btn-invisible.circle {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 34px !important;
-    height: 34px !important;
+    width: 36px !important;
+    height: 36px !important;
     padding: 0 !important;
     margin: 0 !important;
-    border: none !important;
-    background: none !important;
+    border: 1px solid rgba(167, 139, 250, 0.3) !important;
+    background: rgba(124, 58, 237, 0.08) !important;
     border-radius: 50% !important;
-    vertical-align: middle !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
     box-sizing: border-box !important;
 }
 
-#buttonSearch svg, #buttonTheme svg {
-    width: 20px !important;
-    height: 20px !important;
-    fill: currentColor !important;
-    margin: 0 !important;
-    display: block !important;
-}
-
-/* 🌟 3. 仿 Safari / Chrome 移动浏览器全宽搜索栏（100% 居中 + 放大镜居左） */
-.subnav-search, div[search] {
-    flex-basis: 100% !important; /* 强行在下一行占满 100% 宽度 */
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 44px !important;
-    margin: 8px 0 4px 0 !important;
-    padding: 0 5px 0 14px !important;
-    background: rgba(30, 27, 75, 0.85) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-    border-radius: 22px !important; /* 经典手机浏览器地址栏大圆角 */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    order: 99 !important; /* 确保排在第一行下方 */
-}
-
-/* 搜索表单弹性对齐 */
-div[search] form, .subnav-search form {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    gap: 10px !important;
-}
-
-/* 搜索框内原有放大镜图标：置左垂直居中 */
-div[search] svg, .subnav-search svg {
+#buttonHome svg, #buttonTheme svg, #buttonSearch svg, a.btn-invisible svg {
     width: 18px !important;
     height: 18px !important;
     fill: #a78bfa !important;
-    flex-shrink: 0 !important;
     margin: 0 !important;
 }
 
-/* 输入框文本样式 */
-div[search] input, .subnav-search input {
-    flex: 1 !important;
-    height: 100% !important;
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    color: #ffffff !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-div[search] input::placeholder, .subnav-search input::placeholder {
-    color: #94a3b8 !important;
-}
-
-/* 右侧高亮搜索按钮 */
-div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn {
-    height: 34px !important;
-    padding: 0 16px !important;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
-    color: #ffffff !important;
-    border: none !important;
-    border-radius: 17px !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
-    flex-shrink: 0 !important;
-}
-
-/* 🌟 4. 左上角品牌胶囊卡片 */
+/* 🌟 3. 左上角品牌胶囊卡片 */
 .pro-brand-capsule {
-    position: relative;
-    overflow: hidden;
     display: inline-flex !important;
     align-items: center;
-    padding: 5px 12px !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 240, 255, 0.95) 100%) !important;
-    border: 1.5px solid rgba(147, 112, 219, 0.45) !important;
+    padding: 4px 14px 4px 6px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 232, 255, 0.9) 100%) !important;
+    border: 1px solid rgba(167, 139, 250, 0.5) !important;
     border-radius: 30px !important;
-    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.12) !important;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.12) !important;
     text-decoration: none !important;
+    height: 36px !important;
+    box-sizing: border-box !important;
+}
+
+[data-color-mode="dark"] .pro-brand-capsule {
+    background: linear-gradient(135deg, rgba(30, 27, 75, 0.85) 0%, rgba(49, 46, 129, 0.75) 100%) !important;
+    border-color: rgba(167, 139, 250, 0.35) !important;
 }
 
 .pro-brand-capsule img, .pro-brand-capsule .avatar {
-    width: 34px !important;
-    height: 34px !important;
-    border-radius: 8px !important;
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
     object-fit: cover;
     margin-right: 8px !important;
 }
@@ -158,117 +88,123 @@ div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn
 .pro-brand-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.15;
+    justify-content: center;
+    line-height: 1.1;
 }
 
 .pro-brand-title {
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 800 !important;
-    background: linear-gradient(135deg, #7b2cbf 0%, #3a86ff 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .pro-brand-subtitle {
-    font-size: 8px !important;
+    font-size: 7.5px !important;
     font-weight: 700 !important;
-    color: #6c757d !important;
-    letter-spacing: 1.2px;
+    color: #6b7280 !important;
+    letter-spacing: 1px;
 }
 
-/* 🌟 5. 系统公告卡片 */
+/* 🌟 4. 全宽沉浸式搜索栏（独自占满第 2 行） */
+.subnav-search, div[search] {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 42px !important;
+    margin: 4px 0 0 0 !important;
+    padding: 0 4px 0 14px !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
+    border-radius: 21px !important;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+[data-color-mode="dark"] .subnav-search, 
+[data-color-mode="dark"] div[search] {
+    background: rgba(22, 20, 52, 0.85) !important;
+}
+
+.subnav-search input, div[search] input {
+    flex: 1 !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: var(--color-fg-default) !important;
+    font-size: 14px !important;
+}
+
+.subnav-search button, div[search] button {
+    height: 32px !important;
+    padding: 0 16px !important;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 16px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+/* 🌟 5. 系统公告卡片与隐藏项 */
 .pro-notice-card {
-    position: relative !important;
-    overflow: hidden !important;
-    display: block !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #151c2f 100%) !important;
-    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-    border-radius: 16px !important;
-    padding: 14px 16px !important;
-    margin: 14px 0 18px 0 !important;
-    box-shadow: 0 10px 30px rgba(30, 27, 75, 0.3) !important;
+    background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 50%, #0f172a 100%) !important;
+    border: 1px solid rgba(167, 139, 250, 0.3) !important;
+    border-radius: 14px !important;
+    padding: 12px 14px !important;
+    margin: 12px 0 16px 0 !important;
     color: #f1f5f9 !important;
 }
-
-.pro-notice-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-
-.pro-notice-badge1 {
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 6px;
-}
-
-.pro-notice-badge2 {
-    background: rgba(255, 255, 255, 0.12);
-    color: #c084fc;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 6px;
-}
-
-.pro-notice-body {
-    font-size: 13px !important;
-    line-height: 1.7 !important;
-    color: #cbd5e1 !important;
-}
-
-.subTitle {
-    display: none !important;
-}
+.pro-notice-header { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.pro-notice-badge1 { background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 5px; }
+.pro-notice-badge2 { background: rgba(255, 255, 255, 0.1); color: #c084fc; font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 5px; }
+.pro-notice-body { font-size: 12.5px !important; line-height: 1.65 !important; color: #cbd5e1 !important; }
+.tagTitle, .subTitle { display: none !important; }
 </style>
 
 <script>
 (function() {
+    if (window.__PRO_THEME_INITED__) return;
+    window.__PRO_THEME_INITED__ = true;
+
     function initProTheme() {
-        let avatarImg = document.getElementById("avatarImg") || document.querySelector(".avatar");
-        if (avatarImg && !document.getElementById("proBrandCapsule")) {
+        let headerContainer = document.getElementById("header") || document.querySelector(".subnav");
+        if (!headerContainer) return;
+
+        let searchBox = document.querySelector(".subnav-search") || document.querySelector("div[search]");
+        if (searchBox && searchBox.parentNode !== headerContainer) {
+            headerContainer.appendChild(searchBox);
+        }
+
+        if (!document.getElementById("proBrandCapsule")) {
             let capsule = document.createElement("a");
             capsule.id = "proBrandCapsule";
             capsule.href = "https://tghaocc.github.io";
             capsule.className = "pro-brand-capsule";
+            capsule.innerHTML = '<img src="https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png" class="avatar" alt="logo"><div class="pro-brand-text"><span class="pro-brand-title">科技岛</span><span class="pro-brand-subtitle">GLOBAL STORE</span></div>';
             
-            let textDiv = document.createElement("div");
-            textDiv.className = "pro-brand-text";
-            textDiv.innerHTML = '<span class="pro-brand-title">科技岛</span><span class="pro-brand-subtitle">GLOBAL STORE</span>';
-            
-            let parent = avatarImg.parentNode;
-            if (parent) {
-                parent.insertBefore(capsule, avatarImg);
-                capsule.appendChild(avatarImg);
-                capsule.appendChild(textDiv);
+            let oldAvatar = document.getElementById("avatarImg") || document.querySelector(".avatar");
+            if (oldAvatar && oldAvatar.parentNode !== capsule) {
+                oldAvatar.remove();
             }
+            headerContainer.insertBefore(capsule, headerContainer.firstChild);
         }
 
         if (!document.getElementById("proNoticeCard")) {
             let noticeCard = document.createElement("div");
             noticeCard.id = "proNoticeCard";
             noticeCard.className = "pro-notice-card";
-            noticeCard.innerHTML = `
-                <div class="pro-notice-header">
-                    <span class="pro-notice-badge1">📢 系统公告</span>
-                    <span class="pro-notice-badge2">平台指南</span>
-                </div>
-                <div class="pro-notice-body">
-                    欢迎来到科技岛！我们长期为您提供稳定、安全的苹果 ID 与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。
-                </div>
-            `;
+            noticeCard.innerHTML = '<div class="pro-notice-header"><span class="pro-notice-badge1">📢 系统公告</span><span class="pro-notice-badge2">平台指南</span></div><div class="pro-notice-body">欢迎来到科技岛！我们长期为您提供稳定、安全的苹果 ID 与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。</div>';
             
-            let headerContainer = document.getElementById("header") || document.querySelector(".header");
-            if (headerContainer && headerContainer.parentNode) {
+            if (headerContainer.parentNode) {
                 headerContainer.insertAdjacentElement('afterend', noticeCard);
-            } else {
-                document.body.prepend(noticeCard);
             }
         }
     }
