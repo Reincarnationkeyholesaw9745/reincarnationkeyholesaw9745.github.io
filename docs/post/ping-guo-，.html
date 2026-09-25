@@ -12,9 +12,10 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. Header 基础定位 */
+/* 🌟 1. Header 统一流式基准 */
 #header {
     position: relative !important;
+    width: 100% !important;
 }
 
 .subnav {
@@ -24,7 +25,7 @@
     width: 100% !important;
 }
 
-/* 🌟 2. 右侧按钮居中 */
+/* 🌟 2. 右侧功能按钮对齐 */
 .subnav-right {
     display: flex !important;
     align-items: center !important;
@@ -56,27 +57,28 @@
     display: block !important;
 }
 
-/* 🌟 3. 重构搜索框为顶部悬浮胶囊（完美解决错位与半截显示） */
+/* 🌟 3. 搜索栏：内嵌响应式展开（宽度100%对齐，绝不悬浮重叠） */
 .subnav-search, div[search] {
-    position: fixed !important;
-    top: 12px !important;
-    left: 12px !important;
-    right: 12px !important;
-    height: 48px !important;
-    z-index: 999999 !important;
-    background: rgba(30, 27, 75, 0.98) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border: 1.5px solid rgba(167, 139, 250, 0.5) !important;
-    border-radius: 24px !important;
-    padding: 4px 6px 4px 16px !important;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: 44px !important;
+    margin: 12px 0 4px 0 !important;
+    padding: 4px 6px 4px 12px !important;
+    background: rgba(30, 27, 75, 0.75) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(167, 139, 250, 0.35) !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
-    box-sizing: border-box !important;
 }
 
-/* 搜索框表单弹性排版 */
+/* 搜索框表单与内部元素对齐 */
 div[search] form, .subnav-search form {
     display: flex !important;
     align-items: center !important;
@@ -87,31 +89,31 @@ div[search] form, .subnav-search form {
     gap: 8px !important;
 }
 
-/* 输入框样式修正 */
+/* 输入框排版 */
 div[search] input, .subnav-search input {
     flex: 1 !important;
-    height: 36px !important;
+    height: 100% !important;
     background: transparent !important;
     border: none !important;
+    outline: none !important;
     color: #ffffff !important;
     font-size: 14px !important;
-    outline: none !important;
-    padding: 0 6px !important;
+    padding: 0 4px !important;
 }
 
-/* 搜索提交按钮重新设计 */
+/* 搜索提交按钮 */
 div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn {
-    height: 36px !important;
-    padding: 0 16px !important;
+    height: 32px !important;
+    padding: 0 14px !important;
     background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
     color: #ffffff !important;
     border: none !important;
-    border-radius: 18px !important;
+    border-radius: 8px !important;
     font-size: 13px !important;
     font-weight: 700 !important;
     cursor: pointer !important;
     white-space: nowrap !important;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3) !important;
 }
 
 /* 🌟 4. 左上角品牌胶囊卡片 */
