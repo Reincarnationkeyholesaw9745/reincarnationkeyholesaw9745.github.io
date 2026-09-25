@@ -183,15 +183,17 @@ h1.pro-brand-title, .pro-brand-title {
 .pro-notice-badge2 { background: rgba(255, 255, 255, 0.1); color: #c084fc; font-size: 10.5px; font-weight: 600; padding: 2px 7px; border-radius: 5px; }
 .pro-notice-body { font-size: 12.5px !important; line-height: 1.65 !important; color: #cbd5e1 !important; }
 
-/* 🌟 6. 前台彻底隐形副标题与标签组 */
-#subTitle, .subTitle, .tagTitle {
+/* 🌟 6. 前台彻底隐形副标题与标签组（全类名覆盖） */
+#subTitle, .subTitle, #subtitle, .subtitle, .sub-title, #sub-title, .site-subtitle, .header-subtitle, .tagTitle {
     display: none !important;
     height: 0 !important;
+    width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
+    overflow: hidden !important;
 }
 </style>
 
@@ -200,14 +202,21 @@ h1.pro-brand-title, .pro-brand-title {
     if (window.__PRO_THEME_INITED__) return;
     window.__PRO_THEME_INITED__ = true;
 
+    function hideSubTitle() {
+        let targets = document.querySelectorAll('#subTitle, .subTitle, #subtitle, .subtitle, .sub-title, #sub-title, .site-subtitle, .header-subtitle');
+        targets.forEach(function(el) { el.remove(); });
+        document.querySelectorAll('div, p, span').forEach(function(el) {
+            if (el.children.length === 0 && el.textContent && el.textContent.indexOf('专注于全球 Apple ID') !== -1) {
+                el.style.display = 'none';
+                el.remove();
+            }
+        });
+    }
+
     function initProTheme() {
+        hideSubTitle();
         let headerContainer = document.getElementById("header") || document.querySelector(".subnav");
         if (!headerContainer) return;
-
-        let subTitleElem = document.getElementById("subTitle") || document.querySelector(".subTitle");
-        if (subTitleElem) {
-            subTitleElem.style.display = "none";
-        }
 
         let searchBox = document.querySelector(".subnav-search") || document.querySelector("div[search]");
         if (searchBox && searchBox.parentNode !== headerContainer) {
@@ -238,6 +247,7 @@ h1.pro-brand-title, .pro-brand-title {
                 headerContainer.insertAdjacentElement('afterend', noticeCard);
             }
         }
+        hideSubTitle();
     }
 
     if (document.readyState === 'loading') {
@@ -245,6 +255,7 @@ h1.pro-brand-title, .pro-brand-title {
     } else {
         initProTheme();
     }
+    setTimeout(hideSubTitle, 300);
 })();
 </script>
     <link rel="icon" href="https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png"><script>
