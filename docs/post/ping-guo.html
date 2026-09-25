@@ -12,7 +12,7 @@
 <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
 <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. Header 统一流式基准 */
+/* 🌟 1. Header 导航栏：开启弹性换行 */
 #header {
     position: relative !important;
     width: 100% !important;
@@ -20,9 +20,11 @@
 
 .subnav {
     display: flex !important;
+    flex-wrap: wrap !important; /* 允许展开时换行占满一整行 */
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
+    gap: 8px 0 !important;
 }
 
 /* 🌟 2. 右侧功能按钮对齐 */
@@ -57,28 +59,27 @@
     display: block !important;
 }
 
-/* 🌟 3. 搜索栏：内嵌响应式展开（宽度100%对齐，绝不悬浮重叠） */
+/* 🌟 3. 仿 Safari / Chrome 移动浏览器全宽搜索栏（100% 居中 + 放大镜居左） */
 .subnav-search, div[search] {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
+    flex-basis: 100% !important; /* 强行在下一行占满 100% 宽度 */
     width: 100% !important;
+    max-width: 100% !important;
     height: 44px !important;
-    margin: 12px 0 4px 0 !important;
-    padding: 4px 6px 4px 12px !important;
-    background: rgba(30, 27, 75, 0.75) !important;
+    margin: 8px 0 4px 0 !important;
+    padding: 0 5px 0 14px !important;
+    background: rgba(30, 27, 75, 0.85) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
-    border: 1px solid rgba(167, 139, 250, 0.35) !important;
-    border-radius: 12px !important;
+    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
+    border-radius: 22px !important; /* 经典手机浏览器地址栏大圆角 */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
     box-sizing: border-box !important;
     display: flex !important;
     align-items: center !important;
+    order: 99 !important; /* 确保排在第一行下方 */
 }
 
-/* 搜索框表单与内部元素对齐 */
+/* 搜索表单弹性对齐 */
 div[search] form, .subnav-search form {
     display: flex !important;
     align-items: center !important;
@@ -86,10 +87,19 @@ div[search] form, .subnav-search form {
     height: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    gap: 8px !important;
+    gap: 10px !important;
 }
 
-/* 输入框排版 */
+/* 搜索框内原有放大镜图标：置左垂直居中 */
+div[search] svg, .subnav-search svg {
+    width: 18px !important;
+    height: 18px !important;
+    fill: #a78bfa !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+}
+
+/* 输入框文本样式 */
 div[search] input, .subnav-search input {
     flex: 1 !important;
     height: 100% !important;
@@ -98,22 +108,29 @@ div[search] input, .subnav-search input {
     outline: none !important;
     color: #ffffff !important;
     font-size: 14px !important;
-    padding: 0 4px !important;
+    font-weight: 500 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* 搜索提交按钮 */
+div[search] input::placeholder, .subnav-search input::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* 右侧高亮搜索按钮 */
 div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn {
-    height: 32px !important;
-    padding: 0 14px !important;
+    height: 34px !important;
+    padding: 0 16px !important;
     background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
     color: #ffffff !important;
     border: none !important;
-    border-radius: 8px !important;
+    border-radius: 17px !important;
     font-size: 13px !important;
     font-weight: 700 !important;
     cursor: pointer !important;
     white-space: nowrap !important;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3) !important;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
+    flex-shrink: 0 !important;
 }
 
 /* 🌟 4. 左上角品牌胶囊卡片 */
