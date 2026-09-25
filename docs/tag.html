@@ -6,151 +6,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
     <link rel="canonical" href="https://tghaocc.github.io/">
-<meta name="robots" content="index, follow">
-<meta property="og:type" content="website">
-<meta property="og:title" content="科技岛 - 免费苹果ID共享_美区日区AppleID与小火箭账号获取">
-<meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
-<meta property="og:url" content="https://tghaocc.github.io/">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="科技岛 - 免费苹果ID共享_美区日区AppleID与小火箭账号获取">
+    <meta property="og:description" content="科技岛是专业的2026免费苹果ID共享与海外AppleID获取平台。每日实时更新稳定可用的美区、日区、港区苹果账号及密码，一站式解决App Store锁区、双重认证（2FA）及Shadowrocket（小火箭）下载难题。">
+    <meta property="og:url" content="https://tghaocc.github.io/">
 <style>
-/* 🌟 1. Header 导航栏：开启弹性换行 */
+/* 🌟 1. Header 导航栏全局弹性排版 */
 #header {
-    position: relative !important;
-    width: 100% !important;
-}
-
-.subnav {
     display: flex !important;
-    flex-wrap: wrap !important; /* 允许展开时换行占满一整行 */
+    flex-wrap: wrap !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
-    gap: 8px 0 !important;
+    position: relative !important;
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid var(--borderColor-muted, rgba(140, 149, 159, 0.2)) !important;
 }
 
-/* 🌟 2. 右侧功能按钮对齐 */
-.subnav-right {
+.title-right {
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+    margin: 0 0 0 auto !important;
 }
 
-#buttonSearch, #buttonTheme, a.btn-invisible {
+/* 🌟 2. 右上角功能图标按钮（精致晶莹圆扣） */
+#buttonHome, #buttonSearch, #buttonTheme, a.btn-invisible.circle {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 34px !important;
-    height: 34px !important;
+    width: 36px !important;
+    height: 36px !important;
     padding: 0 !important;
     margin: 0 !important;
-    border: none !important;
-    background: none !important;
+    border: 1px solid rgba(167, 139, 250, 0.3) !important;
+    background: rgba(124, 58, 237, 0.1) !important;
     border-radius: 50% !important;
-    vertical-align: middle !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     box-sizing: border-box !important;
 }
 
-#buttonSearch svg, #buttonTheme svg {
-    width: 20px !important;
-    height: 20px !important;
-    fill: currentColor !important;
+#buttonHome:active, a.btn-invisible.circle:active {
+    transform: scale(0.92) !important;
+    background: rgba(124, 58, 237, 0.25) !important;
+}
+
+#buttonHome svg, #buttonTheme svg, a.btn-invisible svg {
+    width: 18px !important;
+    height: 18px !important;
+    fill: #a78bfa !important;
     margin: 0 !important;
     display: block !important;
 }
 
-/* 🌟 3. 仿 Safari / Chrome 移动浏览器全宽搜索栏（100% 居中 + 放大镜居左） */
-.subnav-search, div[search] {
-    flex-basis: 100% !important; /* 强行在下一行占满 100% 宽度 */
-    width: 100% !important;
-    max-width: 100% !important;
-    height: 44px !important;
-    margin: 8px 0 4px 0 !important;
-    padding: 0 5px 0 14px !important;
-    background: rgba(30, 27, 75, 0.85) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-    border-radius: 22px !important; /* 经典手机浏览器地址栏大圆角 */
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
-    order: 99 !important; /* 确保排在第一行下方 */
+[data-color-mode="light"] #buttonHome svg, 
+[data-color-mode="light"] #buttonTheme svg, 
+[data-color-mode="light"] a.btn-invisible svg {
+    fill: #6d28d9 !important;
 }
 
-/* 搜索表单弹性对齐 */
-div[search] form, .subnav-search form {
-    display: flex !important;
-    align-items: center !important;
-    width: 100% !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    gap: 10px !important;
-}
-
-/* 搜索框内原有放大镜图标：置左垂直居中 */
-div[search] svg, .subnav-search svg {
-    width: 18px !important;
-    height: 18px !important;
-    fill: #a78bfa !important;
-    flex-shrink: 0 !important;
-    margin: 0 !important;
-}
-
-/* 输入框文本样式 */
-div[search] input, .subnav-search input {
-    flex: 1 !important;
-    height: 100% !important;
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    color: #ffffff !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-div[search] input::placeholder, .subnav-search input::placeholder {
-    color: #94a3b8 !important;
-}
-
-/* 右侧高亮搜索按钮 */
-div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn {
-    height: 34px !important;
-    padding: 0 16px !important;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
-    color: #ffffff !important;
-    border: none !important;
-    border-radius: 17px !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    white-space: nowrap !important;
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4) !important;
-    flex-shrink: 0 !important;
-}
-
-/* 🌟 4. 左上角品牌胶囊卡片 */
+/* 🌟 3. 左上角品牌胶囊卡片 */
 .pro-brand-capsule {
     position: relative;
     overflow: hidden;
     display: inline-flex !important;
     align-items: center;
-    padding: 5px 12px !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 240, 255, 0.95) 100%) !important;
-    border: 1.5px solid rgba(147, 112, 219, 0.45) !important;
+    padding: 4px 14px 4px 6px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 232, 255, 0.9) 100%) !important;
+    border: 1px solid rgba(167, 139, 250, 0.5) !important;
     border-radius: 30px !important;
-    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.12) !important;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.12) !important;
     text-decoration: none !important;
+    height: 36px !important;
+    box-sizing: border-box !important;
+}
+
+[data-color-mode="dark"] .pro-brand-capsule {
+    background: linear-gradient(135deg, rgba(30, 27, 75, 0.85) 0%, rgba(49, 46, 129, 0.75) 100%) !important;
+    border-color: rgba(167, 139, 250, 0.35) !important;
 }
 
 .pro-brand-capsule img, .pro-brand-capsule .avatar {
-    width: 34px !important;
-    height: 34px !important;
-    border-radius: 8px !important;
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
     object-fit: cover;
     margin-right: 8px !important;
 }
@@ -158,72 +101,178 @@ div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn
 .pro-brand-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.15;
+    justify-content: center;
+    line-height: 1.1;
 }
 
 .pro-brand-title {
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 800 !important;
-    background: linear-gradient(135deg, #7b2cbf 0%, #3a86ff 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-color-mode="dark"] .pro-brand-title {
+    background: linear-gradient(135deg, #c084fc 0%, #60a5fa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .pro-brand-subtitle {
-    font-size: 8px !important;
+    font-size: 7.5px !important;
     font-weight: 700 !important;
-    color: #6c757d !important;
-    letter-spacing: 1.2px;
+    color: #6b7280 !important;
+    letter-spacing: 1px;
+    margin-top: 1px;
 }
 
-/* 🌟 5. 系统公告卡片 */
+[data-color-mode="dark"] .pro-brand-subtitle {
+    color: #9ca3af !important;
+}
+
+/* 🌟 4. 全宽沉浸式搜索栏 */
+.subnav-search, div[search] {
+    flex-basis: 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 42px !important;
+    margin: 12px 0 2px 0 !important;
+    padding: 0 5px 0 14px !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
+    border-radius: 21px !important;
+    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.08) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    order: 99 !important;
+}
+
+[data-color-mode="dark"] .subnav-search, 
+[data-color-mode="dark"] div[search] {
+    background: rgba(22, 20, 52, 0.85) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 搜索栏内部 Flex 精确对齐：放大镜(1) -> 输入框(2) -> 按钮(3) */
+.subnav-search svg, .subnav-search-icon {
+    order: 1 !important;
+    width: 17px !important;
+    height: 17px !important;
+    fill: #7c3aed !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+[data-color-mode="dark"] .subnav-search svg,
+[data-color-mode="dark"] .subnav-search-icon {
+    fill: #a78bfa !important;
+}
+
+.subnav-search input, .subnav-search-input {
+    order: 2 !important;
+    flex: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #1e1b4b !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    float: none !important;
+}
+
+[data-color-mode="dark"] .subnav-search input,
+[data-color-mode="dark"] .subnav-search-input {
+    color: #f1f5f9 !important;
+}
+
+.subnav-search input::placeholder, .subnav-search-input::placeholder {
+    color: #94a3b8 !important;
+}
+
+.subnav-search button, .subnav-search .btn {
+    order: 3 !important;
+    height: 32px !important;
+    padding: 0 16px !important;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 16px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35) !important;
+    flex-shrink: 0 !important;
+    float: none !important;
+    margin: 0 !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.subnav-search button:active, .subnav-search .btn:active {
+    transform: scale(0.95) !important;
+    box-shadow: 0 1px 4px rgba(124, 58, 237, 0.2) !important;
+}
+
+/* 🌟 5. 系统公告卡片调整 */
 .pro-notice-card {
     position: relative !important;
     overflow: hidden !important;
     display: block !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #151c2f 100%) !important;
-    border: 1.5px solid rgba(167, 139, 250, 0.4) !important;
-    border-radius: 16px !important;
-    padding: 14px 16px !important;
-    margin: 14px 0 18px 0 !important;
-    box-shadow: 0 10px 30px rgba(30, 27, 75, 0.3) !important;
+    background: linear-gradient(135deg, #2e1065 0%, #1e1b4b 50%, #0f172a 100%) !important;
+    border: 1px solid rgba(167, 139, 250, 0.3) !important;
+    border-radius: 14px !important;
+    padding: 12px 14px !important;
+    margin: 12px 0 16px 0 !important;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25) !important;
     color: #f1f5f9 !important;
 }
 
 .pro-notice-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 6px;
+    margin-bottom: 6px;
 }
 
 .pro-notice-badge1 {
     background: linear-gradient(135deg, #7c3aed, #4f46e5);
     color: #fff;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 6px;
+    padding: 2px 8px;
+    border-radius: 5px;
 }
 
 .pro-notice-badge2 {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.1);
     color: #c084fc;
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 6px;
+    padding: 2px 7px;
+    border-radius: 5px;
 }
 
 .pro-notice-body {
-    font-size: 13px !important;
-    line-height: 1.7 !important;
+    font-size: 12.5px !important;
+    line-height: 1.65 !important;
     color: #cbd5e1 !important;
 }
 
-.subTitle {
+.tagTitle, .subTitle {
     display: none !important;
 }
 </style>
@@ -231,25 +280,31 @@ div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn
 <script>
 (function() {
     function initProTheme() {
-        let avatarImg = document.getElementById("avatarImg") || document.querySelector(".avatar");
-        if (avatarImg && !document.getElementById("proBrandCapsule")) {
+        // 自动注入左上角品牌胶囊卡片
+        if (!document.getElementById("proBrandCapsule")) {
             let capsule = document.createElement("a");
             capsule.id = "proBrandCapsule";
             capsule.href = "https://tghaocc.github.io";
             capsule.className = "pro-brand-capsule";
-            
+            
+            let img = document.createElement("img");
+            img.src = "https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png";
+            img.className = "avatar";
+            img.alt = "logo";
+            capsule.appendChild(img);
+
             let textDiv = document.createElement("div");
             textDiv.className = "pro-brand-text";
             textDiv.innerHTML = '<span class="pro-brand-title">科技岛</span><span class="pro-brand-subtitle">GLOBAL STORE</span>';
-            
-            let parent = avatarImg.parentNode;
-            if (parent) {
-                parent.insertBefore(capsule, avatarImg);
-                capsule.appendChild(avatarImg);
-                capsule.appendChild(textDiv);
+            capsule.appendChild(textDiv);
+
+            let headerContainer = document.getElementById("header");
+            if (headerContainer) {
+                headerContainer.insertBefore(capsule, headerContainer.firstChild);
             }
         }
 
+        // 自动注入系统公告卡片
         if (!document.getElementById("proNoticeCard")) {
             let noticeCard = document.createElement("div");
             noticeCard.id = "proNoticeCard";
@@ -263,7 +318,7 @@ div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn
                     欢迎来到科技岛！我们长期为您提供稳定、安全的苹果 ID 与海外 Apple ID 获取指南。在这里，您可以轻松获取实时更新的共享账号，并解决 iOS 锁区、双重认证（2FA）及软件下载等常见问题，一站式解锁全球精彩应用与游戏。
                 </div>
             `;
-            
+            
             let headerContainer = document.getElementById("header") || document.querySelector(".header");
             if (headerContainer && headerContainer.parentNode) {
                 headerContainer.insertAdjacentElement('afterend', noticeCard);
@@ -280,7 +335,9 @@ div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn
     }
 })();
 </script>
-    <link rel="icon" href="https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png"><script>
+
+    <link rel="icon" href="https://raw.githubusercontent.com/tghaocc/tghaocc.github.io/refs/heads/main/IMG_4794.png">
+    <script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
@@ -289,10 +346,9 @@ div[search] button, .subnav-search button, div[search] .btn, .subnav-search .btn
 
 </head>
 <style>
-body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 15px auto;padding: 20px;font-size: 16px;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;line-height: 1.25;}
 #header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
-#footer {margin-top:64px; text-align: center;font-size: small;}
-
+#footer {margin-top:48px; text-align: center;font-size: small;}
 </style>
 
 <style>
@@ -315,19 +371,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 .listLabels{white-space:nowrap;}
 
 @media (max-width: 600px) {
-    body { padding: 8px;}
+    body { padding: 12px;}
     .tagTitle{display:none;}
     .LabelTime{display:none;}
 }
 </style>
-
 
 <body>
     <div id="header">
 <span class="tagTitle"><span>Loading</span><span class="AnimatedEllipsis"></span></span>
 <div class="title-right">
     <div class="subnav-search">
-        <input type="search" class="form-control subnav-search-input float-left" aria-label="Search site" value="" style="height:32px;">
+        <input type="search" class="form-control subnav-search-input float-left" aria-label="Search site" placeholder="搜索文章或关键词..." value="" style="height:32px;">
         <button class="btn float-left" type="submit" onclick="javascript:searchShow()">搜索</button>
         <svg class="subnav-search-icon octicon octicon-search" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
             <path id="searchSVG" fill-rule="evenodd"></path>
@@ -462,7 +517,7 @@ function showList(labelsCount){
             center.setAttribute("class","d-flex flex-items-center");
 
             svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-            path=document.createElementNS("http://www.w3.org/2000/svg","path"); 
+            path=document.createElementNS("http://www.w3.org/2000/svg","path"); 
             span=document.createElement("span");
             svg.setAttributeNS(null,"class","SideNav-icon octicon");
             svg.setAttributeNS(null,"style","width:16px;height:16px");
@@ -477,7 +532,7 @@ function showList(labelsCount){
 
             let listLabels=document.createElement("div");
             listLabels.setAttribute("class","listLabels");
-            
+            
             for(label of jsonData[i]['labels']){
                 let LabelName=document.createElement("span");
                 LabelName.setAttribute("class","Label LabelName");
@@ -553,7 +608,5 @@ function searchShow(){
     }
     else{document.getElementsByClassName("notFind")[0].style.display='none';}
 }
-
 </script>
-
 </html>
